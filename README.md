@@ -8,3 +8,5 @@ In this challenge we provide you with the before and after details of nearly one
 Given building details, your task is to build a model that can predict the extent of damage that has been done to a building after an earthquake.
 
 #### This was a hackerearth competition in which I created a model with 73% accuracy. More than 3000 people participated and currectly my rank is under 200
+
+##### This is the link to the competition https://www.hackerearth.com/challenge/competitive/machine-learning-challenge-6-1
