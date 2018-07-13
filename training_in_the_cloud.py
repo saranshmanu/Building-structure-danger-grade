@@ -4,6 +4,7 @@ import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
+from keras.callbacks import ModelCheckpoint
 
 model = Sequential()
 model.add(Dense(120, input_dim=120, activation='relu'))
@@ -37,7 +38,10 @@ test_data = x[500000:]
 test_labels = y[500000:]
 print(train_data[:5])
 
-model.fit(train_data, train_labels, validation_data=(test_data, test_labels), epochs=1000, batch_size=100)
+filepath="advanced_trained_model.best.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+callbacks_list = [checkpoint]
+
+model.fit(train_data, train_labels, validation_data=(test_data, test_labels), epochs=2500, batch_size=100, callbacks=callbacks_list)
 scores = model.evaluate(test_data, test_labels, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
-model.save('advanced_trained_model.h5')
