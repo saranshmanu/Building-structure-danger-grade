@@ -2,15 +2,19 @@ import keras
 import numpy as np
 import pandas as pd
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Dense, BatchNormalization
 from keras.layers import Dropout
 from keras.callbacks import ModelCheckpoint
 
 model = Sequential()
 model.add(Dense(120, input_dim=120, activation='relu'))
-model.add(Dense(70, activation='relu'))
-model.add(Dense(30, activation='relu'))
-model.add(Dense(40, activation='sigmoid'))
+model.add(BatchNormalization())
+model.add(Dense(64, activation='relu'))
+model.add(BatchNormalization())
+model.add(Dense(64, activation='relu'))
+model.add(BatchNormalization())
+model.add(Dense(64, activation='relu'))
+model.add(BatchNormalization())
 model.add(Dropout(0.6))
 model.add(Dense(5, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])

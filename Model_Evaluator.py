@@ -26,5 +26,5 @@ print(train_data[:5])
 filepath="advanced_trained_model.best.h5"
 
 model = load_model(filepath)
-scores = model.evaluate(train_data, train_labels, verbose=0)
+scores = model.evaluate(test_data, test_labels, verbose=0)
 print("Accuracy: %.2f%%" % (scores[1]*100))
